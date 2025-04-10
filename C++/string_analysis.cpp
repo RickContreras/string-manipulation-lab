@@ -3,11 +3,13 @@
 #include <cstring>
 using namespace std;
 
+// Función para verificar si un carácter es una vocal
 bool is_vowel(char ch) {
     ch = tolower(ch);
     return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
 }
 
+// Función para invertir una cadena
 void reverse_string(char* str) {
     int len = strlen(str);
     for (int i = 0; i < len / 2; ++i) {
@@ -15,6 +17,7 @@ void reverse_string(char* str) {
     }
 }
 
+// Función para limpiar una cadena, eliminando caracteres no alfabéticos ni espacios
 void sanitize_string(char* dst, const char* src) {
     while (*src) {
         if (isalpha(*src) || isspace(*src)) {
@@ -25,6 +28,7 @@ void sanitize_string(char* dst, const char* src) {
     *dst = '\0';
 }
 
+// Función para contar vocales, consonantes y el número de cada vocal
 void count_letters(const char* str, int& vowel_count, int& consonant_count, int vowel_counts[5]) {
     vowel_count = consonant_count = 0;
     memset(vowel_counts, 0, 5 * sizeof(int)); // Inicializa el conteo de vocales a 0
@@ -49,6 +53,7 @@ void count_letters(const char* str, int& vowel_count, int& consonant_count, int 
     }
 }
 
+// Función para reemplazar espacios en blanco por guiones bajos
 void replace_spaces(char* str) {
     while (*str) {
         if (*str == ' ') *str = '_';
@@ -57,6 +62,7 @@ void replace_spaces(char* str) {
 }
 
 int main(int argc, char* argv[]) {
+    // Verifica si se proporcionó un argumento
     if (argc < 2) {
         cout << "Por favor, proporciona una cadena como argumento al ejecutar el programa." << endl;
         return 1;
@@ -65,10 +71,12 @@ int main(int argc, char* argv[]) {
     const int MAX_LEN = 100;
     char original[MAX_LEN + 1];
     char cleaned[MAX_LEN + 1];
-
+    
+    // Copia la cadena de entrada y asegura que no exceda el tamaño máximo
     strncpy(original, argv[1], MAX_LEN);
     original[MAX_LEN] = '\0';
 
+    // Limpia y procesa la cadena
     sanitize_string(cleaned, original);
     reverse_string(cleaned);
 
