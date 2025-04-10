@@ -1,0 +1,16 @@
+{
+    "name": "String Manipulation Lab",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu", // Imagen base de Ubuntu
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y g++ golang",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash"
+        },
+        "extensions": [
+          "ms-vscode.cpptools",
+          "golang.go"
+        ]
+      }
+    }
+  }
